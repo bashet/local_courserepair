@@ -33,7 +33,7 @@ $content = '';
 
 $content .= 'This plugin is working fine!';
 
-
+echo phpinfo();
 
 echo $OUTPUT->header();
 echo $content;
