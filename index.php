@@ -32,8 +32,20 @@ $PAGE->navbar->add(get_string('pluginname', 'local_courserepair'));
 $content = '';
 
 $content .= 'This plugin is working fine!';
+global $DB;
+$sql = "SELECT 
+            mdl_upload_assessment_data.id as 'ID',
+            mdl_course.id as 'Id Number',
+            mdl_upload_assessment_data.course_id as 'Course'
+            FROM mdl_upload_assessment_data 
+            INNER JOIN mdl_course
+            ON mdl_course.shortname = SubStr(mdl_upload_assessment_data.course_id,1,LENGTH(mdl_upload_assessment_data.course_id)-4)
+            where upload_assessment_id=$upload_assessment_id";
+            
+            
+$records = $DB->get_records_sql($sql);
 
-echo phpinfo();
+print_r($records);
 
 echo $OUTPUT->header();
 echo $content;
