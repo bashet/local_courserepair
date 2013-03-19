@@ -32,7 +32,7 @@ $PAGE->navbar->add(get_string('pluginname', 'local_courserepair'));
 $content = '';
 
 $content .= 'This plugin is working fine!';
-global $DB;
+global $DB, $CFG;
 $upload_assessment_id = 140;
 $sql = "SELECT 
             mdl_upload_assessment_data.id as 'ID',
@@ -46,7 +46,8 @@ $sql = "SELECT
             
 $records = $DB->get_records_sql($sql);
 
-print_r($records);
+//print_r($records);
+print_r($CFG);
 
 echo $OUTPUT->header();
 echo $content;
