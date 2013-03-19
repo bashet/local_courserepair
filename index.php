@@ -33,6 +33,7 @@ $content = '';
 
 $content .= 'This plugin is working fine!';
 global $DB;
+$upload_assessment_id = 140;
 $sql = "SELECT 
             mdl_upload_assessment_data.id as 'ID',
             mdl_course.id as 'Id Number',
