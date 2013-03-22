@@ -46,9 +46,9 @@ $sql = "SELECT
         where upload_assessment_id=$upload_assessment_id";
     
 $records = $DB->get_records_sql($sql);
-
+var_dump($records);
 //print_r($records);
-print_r($CFG);
+//print_r($records);
 
 echo $OUTPUT->header();
 echo $content;
