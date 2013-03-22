@@ -33,17 +33,18 @@ $content = '';
 
 $content .= 'This plugin is working fine!';
 global $DB, $CFG;
-$upload_assessment_id = 140;
+$upload_assessment_id = 168;
 $sql = "SELECT 
-            mdl_upload_assessment_data.id as 'ID',
-            mdl_course.id as 'Id Number',
-            mdl_upload_assessment_data.course_id as 'Course'
-            FROM mdl_upload_assessment_data 
-            INNER JOIN mdl_course
-            ON mdl_course.shortname = SubStr(mdl_upload_assessment_data.course_id,1,LENGTH(mdl_upload_assessment_data.course_id)-4)
-            where upload_assessment_id=$upload_assessment_id";
-            
-            
+        mdl_upload_assessment_data.id as 'id',
+        mdl_course.id as 'course_id',
+        mdl_upload_assessment_data.assessment_type as 'assessment_type',
+        mdl_upload_assessment_data.due_date as 'due_date',
+        mdl_upload_assessment_data.module_ref as 'module_ref'
+        FROM mdl_upload_assessment_data 
+        INNER JOIN mdl_course
+        ON mdl_course.shortname = SubStr(mdl_upload_assessment_data.course_id,1,LENGTH(mdl_upload_assessment_data.course_id)-4)
+        where upload_assessment_id=$upload_assessment_id";
+    
 $records = $DB->get_records_sql($sql);
 
 //print_r($records);
